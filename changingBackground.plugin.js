@@ -86,7 +86,7 @@ changingBackground.prototype.addInput = function() {
 
 changingBackground.prototype.getSettingsPanel = function () {
   var settings = this.loadSettings();
-  var html = "<div id='cbsettings'><h2>Settings</h2>"
+  var html = "<div id='cbsettings'><h1>Changing Background</h1><h2>Settings</h2>"
   html += "Intervals:<br>"
   html += "<input id='intervals' type='number' value="+(settings.cd)+"> milliseconds<br><br>";
   html += "Images:<br>"
@@ -105,11 +105,11 @@ changingBackground.prototype.getSettingsPanel = function () {
 };
 
 changingBackground.prototype.getName = function () {
-  return "Background Changer Plugin";
+  return "Changing Background";
 };
 
 changingBackground.prototype.getDescription = function () {
-  return "Changes the Background Image from Themes";
+  return "Changes the Background Image from Themes automatically";
 };
 
 changingBackground.prototype.getVersion = function () {
