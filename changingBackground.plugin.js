@@ -45,7 +45,7 @@ changingBackground.prototype.loadSettings = function() {
 changingBackground.prototype.saveSettings = function(button) {
 
   var settings = this.loadSettings();
-  settings.cd = $("#cbsettings #intervals").val();	
+  settings.cd = $("#cbsettings #intervals").val();
   settings.transition = $("#cbsettings #transition").val();
   settings.startImage = $("#cbsettings #startimg").val();
   settings.images = new Array();
