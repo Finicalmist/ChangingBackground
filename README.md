@@ -26,15 +26,15 @@ use this:
   --transition: 5s;
 }
 .element1{
-  background: var(--background-image);
+  background-image: var(--background-image);
   transition: var(--transition);
 }
 .element2{
-  background: var(--background-image);
+  background-image: var(--background-image);
   transition: var(--transition);
 }
 .element3{
-  background: var(--background-image);
+  background-image: var(--background-image);
   transition: var(--transition);
 }
 ```
