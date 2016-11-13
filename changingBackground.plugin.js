@@ -23,6 +23,7 @@ changingBackground.prototype.defaultSettings = function() {
   return{
     version: this.settingsVersion,
     cd: 30000,
+    transition: 5,
     startImage: 1,
     images: new Array(
       "https://cdn.rawgit.com/Zerthox/ClearVision/master/images/amber.jpg",
@@ -44,7 +45,8 @@ changingBackground.prototype.loadSettings = function() {
 changingBackground.prototype.saveSettings = function(button) {
 
   var settings = this.loadSettings();
-  settings.cd = $("#cbsettings #intervals").val();
+  settings.cd = $("#cbsettings #intervals").val();	
+  settings.transition = $("#cbsettings #transition").val();
   settings.startImage = $("#cbsettings #startimg").val();
   settings.images = new Array();
   $("ol li").each(function(index) {
@@ -64,6 +66,7 @@ changingBackground.prototype.resetSettings = function(button) {
   var settings = this.defaultSettings();
   localStorage.changingBackground = JSON.stringify(settings);
   this.stop();
+  document.documentElement.style.setProperty('--transition', settings.transition+'s');
   this.start();
   button.innerHTML = "Resetted";
   setTimeout(function(){button.innerHTML = "Reset";},1000);
@@ -72,6 +75,7 @@ changingBackground.prototype.resetSettings = function(button) {
 changingBackground.prototype.start = function () {
   var settings = this.loadSettings();
   document.documentElement.style.setProperty('--background-image', 'url("'+settings.images[settings.startImage-1]+'")');
+  document.documentElement.style.setProperty('--transition', settings.transition+'s');
   this.startChanging();
 };
 changingBackground.prototype.load = function () {
@@ -89,6 +93,8 @@ changingBackground.prototype.getSettingsPanel = function () {
   var html = "<div id='cbsettings'><h1>Changing Background</h1><h2>Settings</h2>"
   html += "Intervals:<br>"
   html += "<input id='intervals' type='number' value="+(settings.cd)+"> milliseconds<br><br>";
+  html += "Transition speed:<br>"
+  html += "<input id='transition' type='number' value="+(settings.transition)+"> second(s)<br><br>";
   html += "Images:<br>"
   html += "<ol style='list-style-type: decimal; padding-left: 25px;'>"
   for(var k in settings.images){
