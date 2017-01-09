@@ -35,10 +35,17 @@ changingBackground.prototype.defaultSettings = function() {
   }
 }
 changingBackground.prototype.loadSettings = function() {
-  var settings = (localStorage.changingBackground) ? JSON.parse(localStorage.changingBackground) : {version:"0"};
+	var cB = bdPluginStorage.get("changingBackground", "changingBackground");
+	var settings;
+	if(cB == null){
+		settings = {version:"0"};
+	}else{
+	settings = JSON.parse(cB);
+	}
+  
 	if(settings.version != this.settingsVersion){
 		settings = this.defaultSettings();
-		localStorage.changingBackground = JSON.stringify(settings);
+		bdPluginStorage.set("changingBackground", "changingBackground", JSON.stringify(settings));
 	}
 	return settings;
 };
@@ -55,7 +62,7 @@ changingBackground.prototype.saveSettings = function(button) {
       settings.images[index] = input.val();
     }
   });
-  localStorage.changingBackground = JSON.stringify(settings);
+  bdPluginStorage.set("changingBackground", "changingBackground", JSON.stringify(settings));
   this.stop();
 	this.start();
 	button.innerHTML = "Saved";
@@ -64,7 +71,7 @@ changingBackground.prototype.saveSettings = function(button) {
 
 changingBackground.prototype.resetSettings = function(button) {
   var settings = this.defaultSettings();
-  localStorage.changingBackground = JSON.stringify(settings);
+  bdPluginStorage.set("changingBackground", "changingBackground", JSON.stringify(settings));
   this.stop();
   document.documentElement.style.setProperty('--transition', settings.transition+'s');
   this.start();
