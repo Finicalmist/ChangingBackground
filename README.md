@@ -1,7 +1,7 @@
 ## ChangingBackground
 Changes the Background Image from Themes
 ##Compatible with
-* [ClearVision](https://github.com/Zerthox/ClearVision) (Not anymore, you have to modify the .css file)
+* [ClearVision](https://github.com/Zerthox/ClearVision) (Not anymore, you'll have to modify the .css file)
 
 ## How to make your Theme compatible:
 Instead of this:
